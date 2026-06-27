@@ -1,0 +1,16 @@
+model User {
+  id                 String   @id @default(uuid())
+  name               String   @db.VarChar(100)
+  email              String   @unique @db.VarChar(150)
+  password           String   @db.VarChar(255)
+  needPasswordChange Boolean  @default(true)
+  phone              String?  @db.VarChar(20)
+  role               Role     @default(STUDENT)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  students Student[]
+  teachers Teacher[]
+
+  @@map("users")
+}

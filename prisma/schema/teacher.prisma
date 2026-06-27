@@ -1,0 +1,18 @@
+model Teacher {
+  userId String @id @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  coachingId String   @map("coaching_id")
+  coaching   Coaching @relation(fields: [coachingId], references: [id])
+
+  designation   String?       @db.VarChar(100)
+  qualification String?       @db.Text
+  specialty     String?       @db.VarChar(255)
+  phone         String?       @db.VarChar(20)
+  status        TeacherStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("teachers")
+}

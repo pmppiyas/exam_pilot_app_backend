@@ -1,0 +1,27 @@
+enum CoachingStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+model Coaching {
+  id        String  @id @default(uuid())
+  name      String  @db.VarChar(150)
+  slug      String  @unique @db.VarChar(100)
+  ownerName String  @map("owner_name") @db.VarChar(150)
+  ownerId   String? @unique @map("owner_id")
+
+  logo    String?        @db.Text
+  banner  String?        @db.Text
+  phone   String?        @db.VarChar(20)
+  address String?        @db.Text
+  status  CoachingStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  students Student[]
+  teachers Teacher[]
+
+  @@map("coachings")
+}

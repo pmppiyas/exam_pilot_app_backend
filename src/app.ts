@@ -1,16 +1,17 @@
-import express, { type Application} from "express";
+import express, { type Application } from "express";
 import cookieParser from 'cookie-parser';
 import cors from "cors"
 import compression from "compression";
+import router from './app/routes/routes';
 
-const app:  Application = express();
+const app: Application = express();
 
 app.use(cookieParser());
 
 app.use(
   cors({
     origin: [],
-    credentials:  true
+    credentials: true
   })
 )
 
@@ -20,8 +21,10 @@ app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (_req, res) => {
-  res.send('Welcome to the PeaceTwwet Server!');
+  res.send('Welcome to the Exam Pilot!');
 });
+
+app.use('/api/v1', router);
 
 
 app.use((req, res,) => {

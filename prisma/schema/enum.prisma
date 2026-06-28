@@ -16,3 +16,9 @@ enum TeacherStatus {
   ACTIVE
   INACTIVE
 }
+
+enum CoachingStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}

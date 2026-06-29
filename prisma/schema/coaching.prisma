@@ -17,8 +17,9 @@ model Coaching {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  students Student[]
-  teachers Teacher[]
+  students  Student[]
+  teachers  Teacher[]
+  questions Question[]
 
   @@map("coachings")
 }

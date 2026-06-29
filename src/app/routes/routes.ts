@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { CoachingRoutes } from '../module/coaching/coaching.routes';
+import { QuestionRoutes } from '../module/question/question.routes';
 
 const router = Router();
 
@@ -12,6 +13,10 @@ const allRoutes: routerArgs[] = [
   {
     path: '/coaching',
     route: CoachingRoutes,
+  },
+  {
+    path: '/question',
+    route: QuestionRoutes,
   },
 ];
 

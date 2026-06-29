@@ -1,0 +1,19 @@
+model Question {
+  id            String    @id @default(uuid())
+  questionNo    Int       @default(dbgenerated("nextval('question_no_seq')")) @map("question_no")
+  title         String    @db.Text
+  optionA       String    @map("option_a") @db.Text
+  optionB       String    @map("option_b") @db.Text
+  optionC       String    @map("option_c") @db.Text
+  optionD       String    @map("option_d") @db.Text
+  correctAnswer String    @map("correct_answer") @db.VarChar(10)
+  explain       String?   @map("explain") @db.Text
+  creatorName   String    @map("creator_name") @db.VarChar(150)
+  coachingId    String?   @map("coaching_id")
+  coaching      Coaching? @relation(fields: [coachingId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("questions")
+}

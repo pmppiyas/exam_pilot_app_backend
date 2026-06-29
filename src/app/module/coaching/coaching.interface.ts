@@ -13,7 +13,7 @@ export interface ICoaching {
   phone?: string | null;
   address?: string | null;
   status: CoachingStatus;
-
+  password: string;
   createdAt: Date;
   updatedAt: Date;
 

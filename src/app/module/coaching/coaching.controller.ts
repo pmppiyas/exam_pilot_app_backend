@@ -6,7 +6,7 @@ import { StatusCodes } from 'http-status-codes';
 
 const createCoaching = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const result = await CoachingServices.createCoaching(req.body)
+    const result = await CoachingServices.createCoaching(req.body);
 
     sendResponse(res, {
       success: true,
@@ -17,7 +17,20 @@ const createCoaching = catchAsync(
   }
 );
 
+const getCoachings = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await CoachingServices.getCoachings();
+
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: 'Coachings retrieved successfully',
+      data: result,
+    });
+  }
+);
 
 export const CoachingController = {
-  createCoaching
-}
+  createCoaching,
+  getCoachings,
+};

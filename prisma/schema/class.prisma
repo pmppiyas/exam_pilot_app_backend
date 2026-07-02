@@ -1,12 +1,14 @@
 model Class {
-  id         String     @id @default(uuid())
-  name       String     @db.VarChar(150)
-  slug       String     @db.VarChar(150)
-  coachingId String     @map("coaching_id")
-  subjects   Subject[]
-  topics     Topic[]
-  coaching   Coaching   @relation(fields: [coachingId], references: [id])
-  questions  Question[]
+  id   String @id @default(uuid())
+  name String @db.VarChar(150)
+  slug String @db.VarChar(150)
+
+  coachingId String   @map("coaching_id")
+  coaching   Coaching @relation(fields: [coachingId], references: [id])
+
+  subjects  Subject[]
+  topics    Topic[]
+  questions Question[]
 
   @@map("classes")
 }

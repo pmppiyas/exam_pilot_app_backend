@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { CoachingRoutes } from '../module/coaching/coaching.routes';
 import { QuestionRoutes } from '../module/question/question.routes';
+import { ClassRouter } from '../module/class/class.router';
 
 const router = Router();
 
@@ -17,6 +18,10 @@ const allRoutes: routerArgs[] = [
   {
     path: '/question',
     route: QuestionRoutes,
+  },
+  {
+    path: '/class',
+    route: ClassRouter,
   },
 ];
 

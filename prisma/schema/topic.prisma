@@ -9,4 +9,6 @@ model Topic {
   coaching   Coaching   @relation(fields: [coachigId], references: [id])
   subject    Subject    @relation(fields: [subjectId], references: [id])
   questions  Question[]
+
+  @@map("topics")
 }

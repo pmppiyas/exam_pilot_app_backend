@@ -1,25 +1,24 @@
 model Coaching {
-  id String @id @default(uuid())
-
-  serial String @default(dbgenerated("nextval('coaching_serial_seq')::text"))
-
+  id         String         @id @default(uuid())
   name       String         @db.VarChar(150)
   slug       String         @unique @db.VarChar(100)
   ownerName  String         @map("owner_name") @db.VarChar(150)
+  logo       String?
+  banner     String?
+  phone      String?        @db.VarChar(20)
+  address    String?
+  status     CoachingStatus @default(ACTIVE)
+  createdAt  DateTime       @default(now()) @map("created_at")
+  updatedAt  DateTime       @updatedAt @map("updated_at")
+  serial     String         @default(dbgenerated("(nextval('coaching_serial_seq'::regclass))::text"))
   ownerEmail String         @unique @map("owner_email")
   password   String
-  logo       String?        @db.Text
-  banner     String?        @db.Text
-  phone      String?        @db.VarChar(20)
-  address    String?        @db.Text
-  status     CoachingStatus @default(ACTIVE)
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  students  Student[]
-  teachers  Teacher[]
-  questions Question[]
+  subjects   Subject[]
+  topics     Topic[]
+  classes    Class[]
+  questions  Question[]
+  students   Student[]
+  teachers   Teacher[]
 
   @@map("coachings")
 }

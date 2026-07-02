@@ -1,19 +1,15 @@
 model Student {
-  userId String @id @map("user_id")
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  rollNumber    String?  @map("roll_number") @db.VarChar(50)
-  guardianPhone String?  @map("guardian_phone") @db.VarChar(20)
-  enrolledAt    DateTime @default(now()) @map("enrolled_at") @db.Date
-
-  status      StudentStatus @default(ACTIVE)
-  institution String?       @db.VarChar(150)
-
-  coachingId String   @map("coaching_id")
-  coaching   Coaching @relation(fields: [coachingId], references: [id], onDelete: Cascade)
-
-  batchId String? @map("batch_id")
-  classId String? @map("class_id")
+  userId        String        @id @map("user_id")
+  rollNumber    String?       @map("roll_number") @db.VarChar(50)
+  guardianPhone String?       @map("guardian_phone") @db.VarChar(20)
+  enrolledAt    DateTime      @default(now()) @map("enrolled_at") @db.Date
+  status        StudentStatus @default(ACTIVE)
+  institution   String?       @db.VarChar(150)
+  coachingId    String        @map("coaching_id")
+  batchId       String?       @map("batch_id")
+  classId       String?       @map("class_id")
+  coaching      Coaching      @relation(fields: [coachingId], references: [id], onDelete: Cascade)
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("students")
 }

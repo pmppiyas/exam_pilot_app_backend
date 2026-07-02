@@ -1,0 +1,10 @@
+model Subject {
+  id         String   @id @default(uuid())
+  name       String
+  slug       String
+  coachingId String
+  classId    String
+  class      Class    @relation(fields: [classId], references: [id])
+  coaching   Coaching @relation(fields: [coachingId], references: [id])
+  topics     Topic[]
+}

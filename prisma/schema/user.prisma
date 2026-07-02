@@ -8,9 +8,8 @@ model User {
   role               Role     @default(STUDENT)
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-
-  students Student[]
-  teachers Teacher[]
+  students           Student?
+  teachers           Teacher?
 
   @@map("users")
 }
